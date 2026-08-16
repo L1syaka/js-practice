@@ -1,31 +1,21 @@
 "use strict";
 
-function getCircumference(radius) {
-    return (2 * Math.PI * radius).toFixed(2);
-}
-function getArea(radius) {
-    return (Math.PI * radius ** 2).toFixed(2);
+function getTriangleArea(side1, side2, side3) {
+    let p = (side1 + side2 + side3) / 2;
+    return (Math.sqrt(p * (p - side1) * (p - side2) * (p - side3))).toFixed(3);
 }
 
-let input = document.querySelector('#inp');
+
+let inputs = document.querySelectorAll('.inp');
 let p = document.querySelector('p');
-let select = document.querySelector('select');
 let button = document.querySelector('button');
 
-select.addEventListener('change', () => {
-    input.value = '';
-    p.textContent = ''
-});
-
-
 button.addEventListener('click', () => {
-    let radius = input.value;
+    let [inp1, inp2, inp3] = inputs;
 
-    if (radius === '') return;
+    if (inp1.value === '' ||
+        inp2.value === '' ||
+        inp3.value === '') return;
 
-    if (select.value === 'Circumference') {
-        p.textContent = getCircumference(+radius);
-    } else {
-        p.textContent = getArea(+radius);
-    }
+    p.textContent = getTriangleArea(+inp1.value, +inp2.value, +inp3.value);
 });
