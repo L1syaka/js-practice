@@ -1,34 +1,31 @@
 "use strict";
 
-function getSquare(num1, num2) {
-    return num1 * num2;
+function getCircumference(radius) {
+    return (2 * Math.PI * radius).toFixed(2);
 }
-function getPerimeter(num1, num2) {
-    return 2 * (num1 + num2)
+function getArea(radius) {
+    return (Math.PI * radius ** 2).toFixed(2);
 }
 
-let input1 = document.querySelector('#input1');
-let input2 = document.querySelector('#input2');
+let input = document.querySelector('#inp');
 let p = document.querySelector('p');
 let select = document.querySelector('select');
 let button = document.querySelector('button');
 
 select.addEventListener('change', () => {
-    input1.value = '';
-    input2.value = '';
+    input.value = '';
     p.textContent = ''
 });
 
 
 button.addEventListener('click', () => {
-    let a = input1.value;
-    let b = input2.value;
+    let radius = input.value;
 
-    if (a === '' || b === '') return;
+    if (radius === '') return;
 
-    if (select.value === 'square') {
-        p.textContent = getSquare(+a, +b);
+    if (select.value === 'Circumference') {
+        p.textContent = getCircumference(+radius);
     } else {
-        p.textContent = getPerimeter(+a, +b);
+        p.textContent = getArea(+radius);
     }
 });
