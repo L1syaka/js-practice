@@ -26,3 +26,21 @@ td:hover{
 .wrong{
 	background-color: rgb(207, 46, 43);
 }
+#container {
+    width: max-content;
+}
+#game-info{
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid black;
+	border-bottom: none;
+}
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}
+.timer{
+	color: yellow;
+}
