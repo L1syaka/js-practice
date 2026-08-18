@@ -16,6 +16,7 @@
    * Biggest common divisor
    * Smallest common multiple
 3. Guess the number
+4. Guess cell
 
 ## Technologies
 * HTML
