@@ -1,5 +1,8 @@
 # My JavaScript practice while learning
 
+## Live Demos
+
+[Demos list](https://L1syaka.github.io/js-practice/)
 
 ## Projects
 
