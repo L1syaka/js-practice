@@ -25,20 +25,23 @@ function timer() {
             gameTimer.classList.add('red');
             gameFlag = true;
             clearInterval(timerId);
+            clicks.textContent = `Total Clicks: ${totalClicks}`
         } else if (randomCells.length === 0) {
             gameTimer.textContent = 'You win!'
             gameTimer.classList.remove('timer');
             gameTimer.classList.add('green');
             gameFlag = true;
             clearInterval(timerId);
+            clicks.textContent = `Total Clicks: ${totalClicks}`
         }
     }, 1000);
 }
 
 let gameTimer = document.querySelector('#game-timer')
-let cellLeft = document.querySelector('#cell-count');
-let CellsLeft = cellLeft.querySelector('#left');
-let CellsTotal = cellLeft.querySelector('#total');
+let cellInfo = document.querySelector('#cell-count');
+let clicks = document.querySelector('#total-clicks')
+let cellsLeft = cellInfo.querySelector('#left');
+let cellsTotal = cellInfo.querySelector('#total');
 let table = document.createElement('table');
 let container = document.querySelector('#container');
 container.append(table);
@@ -61,15 +64,18 @@ for (let i = 1; i <= 10; i++) {
 
 let randomCells = getRandomCells();
 let time = 40;
+let totalClicks = 0;
 let timerId = null;
 let gameFlag = null;
 
+
 gameTimer.textContent = `Time left: ${time}`;
+cellsLeft.textContent = `${randomCells.length} /`;
+cellsTotal.textContent = randomCells.length;
 gameTimer.classList.add('timer');
-CellsLeft.classList.add('green');
-CellsTotal.classList.add('red');
-CellsLeft.textContent = `${randomCells.length} /`;
-CellsTotal.textContent = randomCells.length;
+cellsLeft.classList.add('green');
+cellsTotal.classList.add('red');
+clicks.classList.add('blue');
 
 table.addEventListener('click', function (event) {
     let td = event.target.closest('td');
@@ -82,13 +88,14 @@ table.addEventListener('click', function (event) {
     if(td.classList.contains('correct') ||
     td.classList.contains('wrong')) return;
     
+    clicks.textContent = `Clicks: ${++totalClicks}`;
     timer();
     
     if(randomCells.includes(cell)) {
         let index = randomCells.indexOf(cell);
         randomCells.splice(index, 1)
 
-        CellsLeft.textContent = `${randomCells.length} /`;
+        cellsLeft.textContent = `${randomCells.length} /`;
 
         td.classList.add('correct');
     } else {

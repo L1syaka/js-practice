@@ -36,11 +36,14 @@ td:hover{
 	border-bottom: none;
 }
 .red{
-	color: red;
+	color: rgb(248, 66, 66);
 }
 .green{
 	color: green;
 }
 .timer{
-	color: yellow;
+	color: rgb(255, 255, 105);
+}
+.blue{
+	color: rgb(122, 122, 227);
 }
