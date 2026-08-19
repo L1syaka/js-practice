@@ -1,8 +1,41 @@
-.dark-theme{
+/* .dark-theme{
 	background-color: rgb(59, 59, 59);
 	color: white;
-}
+} */
 body{
 	font-size: 2rem;
 	padding: 2rem;
+}
+.keyboard-container{
+	width: fit-content;
+	margin-top: 2rem;
+}
+.keyboard-container button{
+	display: block;
+	margin-left: auto;
+	outline-color: black;
+	box-shadow: rgba(0, 0, 0, 0.218) 3px 5px 5px 3px;
+}
+table{
+	border: 1px solid black;
+	border-radius: 10px;
+	border-spacing: 0.2rem;
+	box-shadow: rgba(0, 0, 0, 0.218) 5px 5px 4px 2px;
+	padding: 0.2rem;
+	background-color: rgb(219, 219, 219);
+}
+td{
+	width: 30px;
+	height: 30px;
+	margin: 20px;
+	padding: 0.3rem;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 1.8rem;
+	user-select: none;
+}
+td:hover{
+	background-color: rgb(196, 196, 196);
+	cursor: pointer;
 }
