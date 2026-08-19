@@ -1,15 +1,19 @@
 "use strict";
 
-function showOnScreenKeyboard(targetInput) {
+
+let keyboard = (function createKeyboard() {
     let keyboardArr = ['1234567890', 'qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 
     let keyboardContainer = document.createElement('div');
-    let closeButton = document.createElement('button');
     let table = document.createElement('table');
-    
+    let capslockButton = document.createElement('td');
+
+    capslockButton.dataset.key = 'capslock';
+    capslockButton.colSpan = 3;
     table.classList.add('on-screen-keyboard');
-    keyboardContainer.classList.add('keyboard-container');
-    closeButton.textContent = '✖';
+    keyboardContainer.classList.add('keyboard-container', 'hidden');
+
+    capslockButton.textContent = 'CapsLock'
 
     for (let keysRow of keyboardArr) {
         let tr = document.createElement('tr');
@@ -23,41 +27,59 @@ function showOnScreenKeyboard(targetInput) {
         table.append(tr);
     }
 
-
+    let lastRow = table.lastElementChild;
+    lastRow.append(capslockButton);
+  
     document.body.append(keyboardContainer);
-    keyboardContainer.append(closeButton);
     keyboardContainer.append(table);
 
+    return keyboardContainer;
+})();
+
+
+function showKeyboard(targetInput) {
+    let capsFlag = false;
+    
+    keyboard.classList.toggle('hidden')
 
     document.addEventListener('click', function keyboardClick(event) {
-
         if(event.target === targetInput) return;
 
         let targetKeyboard = event.target.closest('.on-screen-keyboard');
-        
+
         if(!targetKeyboard) {
+            keyboard.classList.toggle('hidden');
             document.removeEventListener('click', keyboardClick);
-            keyboardContainer.remove();
             return;
         };
+        
+        if(event.target.dataset.key === 'capslock') {
+            event.target.classList.toggle('active');
+            capsFlag = !capsFlag;
+            return;
+        }
         
         let targetKey = event.target.closest('td');
 
         if(!targetKey) return;
 
         targetInput.focus();
-        targetInput.value += targetKey.textContent;
-    });
 
-    closeButton.addEventListener('click', function() {
-        keyboardContainer.remove();
+
+        if(capsFlag) {
+            targetInput.value += targetKey.textContent.toUpperCase();
+        } else {
+            targetInput.value += targetKey.textContent;
+        }
     });
 }
+
 
 let input = document.querySelector('#main-input');
 
 input.addEventListener('focus', function() {
-    if(document.body.querySelector('.on-screen-keyboard')) return;
+    if(!keyboard.classList.contains('hidden')) return;
 
-    showOnScreenKeyboard(this)
+    showKeyboard(this);
 });
+

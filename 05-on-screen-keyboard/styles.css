@@ -10,12 +10,6 @@ body{
 	width: fit-content;
 	margin-top: 2rem;
 }
-.keyboard-container button{
-	display: block;
-	margin-left: auto;
-	outline-color: black;
-	box-shadow: rgba(0, 0, 0, 0.218) 3px 5px 5px 3px;
-}
 table{
 	border: 1px solid black;
 	border-radius: 10px;
@@ -38,4 +32,10 @@ td{
 td:hover{
 	background-color: rgb(196, 196, 196);
 	cursor: pointer;
+}
+.hidden{
+	display: none;
+}
+.active{
+	background-color: rgb(140, 140, 140);
 }
