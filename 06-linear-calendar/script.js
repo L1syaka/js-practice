@@ -15,9 +15,12 @@ function showLinearCalendar() {
         }
 
         let li = document.createElement('li');
-        li.textContent = monthDays.getDate();
+        li.textContent = monthDays.getDate();   
 
-        
+        if(monthDays.getDate() === now.getDate()) {
+            li.classList.add('currentDay');
+        }
+
         ul.append(li);
         day++;
     }
