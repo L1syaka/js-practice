@@ -6,6 +6,9 @@ body{
 	font-size: 2rem;
 	padding: 2rem;
 }
+.calendar-container{
+	text-align: center;
+}
 ul{
 	display: flex;
 	list-style: none;
