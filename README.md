@@ -23,6 +23,7 @@
 5. On-screen keyboard
 6. Linear calendar
 7. Tag searcher
+8. Historical events searcher
 
 ## Technologies
 * HTML
