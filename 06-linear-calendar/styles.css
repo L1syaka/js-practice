@@ -9,11 +9,19 @@ body{
 .calendar-container{
 	text-align: center;
 }
+.currentDay{
+	color: rgb(246, 107, 47);
+}
+.calendar-header{
+	text-align: center;
+}
+.calendar-header a{
+	color: inherit;
+	text-decoration: none;
+}
 ul{
 	display: flex;
 	list-style: none;
+	padding-left: 0;
 	gap: 15px;
-}
-.currentDay{
-	color: rgb(246, 107, 47);
 }

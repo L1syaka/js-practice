@@ -2,6 +2,8 @@
 
 function showLinearCalendar() {
     let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth();
     let monthsArr = [
         "January",
         "February",
@@ -16,34 +18,82 @@ function showLinearCalendar() {
         "November",
         "December"
     ]
+
     
     let calendarContainer = document.createElement('div');
-    let calendarCurrentDate = document.createElement('div')
+    let calendarHeader = document.createElement('div');
+    let arrowPrevious = document.createElement('a');
+    let arrowNext = document.createElement('a');
+    let title = document.createElement('span')
     let ul = document.createElement('ul');
     
+
     calendarContainer.classList.add('calendar-container')
-    calendarCurrentDate.textContent = `${monthsArr[now.getMonth()]} | ${now.getFullYear()}`;
+    calendarHeader.classList.add('calendar-header')
+    arrowPrevious.classList.add('arrow-prev');
+    arrowNext.classList.add('arrow-next');
+    arrowPrevious.href = '';
+    arrowNext.href = '';
+
+    arrowPrevious.textContent = '←';
+    arrowNext.textContent = '→';
+    title.textContent = `${monthsArr[month]} | ${year}`;
     
+
     document.body.append(calendarContainer);
-    calendarContainer.append(calendarCurrentDate);
+    calendarHeader.append(arrowPrevious);
+    calendarHeader.append(title);
+    calendarHeader.append(arrowNext);
+    calendarContainer.append(calendarHeader);
     calendarContainer.append(ul);
     
-    for(let day = 1; ;day++) {
-        let currentMonth = new Date(now.getFullYear(), now.getMonth(), day);
-        
-        if(!(now.getMonth() === currentMonth.getMonth())) {
-            return;
-        }
+    function makeCalendar(month, year) {
+        ul.textContent = '';
 
-        let li = document.createElement('li');
-        li.textContent = currentMonth.getDate();
+        for(let day = 1; ;day++) {
+            let currentMonth = new Date(year, month, day);
 
-        if(currentMonth.getDate() === now.getDate()) {
-            li.classList.add('currentDay');
-        }
+            if(month !== currentMonth.getMonth()) {
+                return;
+            }
 
-        ul.append(li);
+            let li = document.createElement('li');
+            li.textContent = currentMonth.getDate();
+
+            if(currentMonth.getDate() === now.getDate() &&
+               currentMonth.getMonth() === now.getMonth() &&
+               currentMonth.getFullYear() === now.getFullYear()) {
+                li.classList.add('currentDay');
+            }
+
+            ul.append(li);
+        }   
     }
+    makeCalendar(month, year);
 
+    
+        calendarHeader.addEventListener('click', function(event) {
+        let target = event.target.closest('a');
+        
+        if(!target) return;
+        event.preventDefault();
+
+        if (target.classList.contains('arrow-prev')) {
+            month--;
+        } else {
+            month++;
+        }
+
+        if (month < 0) {
+            month = 11;
+            year--;
+        }
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+        makeCalendar(month, year)
+        title.textContent = `${monthsArr[month]} | ${year}`;
+    });
 }
 showLinearCalendar();
