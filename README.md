@@ -20,6 +20,9 @@
    * Smallest common multiple
 3. Guess the number
 4. Guess cell
+5. On-screen keyboard
+6. Linear calendar
+7. Tag searcher
 
 ## Technologies
 * HTML
