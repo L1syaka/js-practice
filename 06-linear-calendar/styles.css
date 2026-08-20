@@ -6,3 +6,8 @@ body{
 	font-size: 2rem;
 	padding: 2rem;
 }
+ul{
+	display: flex;
+	list-style: none;
+	gap: 15px;
+}
