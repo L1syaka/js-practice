@@ -29,3 +29,9 @@ button {
 button:not(.active) {
 	display: none;
 }
+.good {
+	color: green;
+}
+.bad {
+	color: red;
+}
