@@ -24,6 +24,14 @@
 6. Linear calendar
 7. Tag searcher
 8. Historical events searcher
+9. Horoscope
+10. Prediction website
+11. Autocomplete suggestions
+12. Spoiler
+13. Tabs
+14. Accordion tabs
+
+
 
 ## Technologies
 * HTML
