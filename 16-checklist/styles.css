@@ -3,6 +3,25 @@
 	color: white;
 } */
 body{
+	text-align: center;
 	font-size: 2rem;
 	padding: 2rem;
+}
+#list {
+	padding: 0;
+	list-style-type: none;
+}
+#list span {
+	margin-right: 20px;
+}
+#list .remove, #list .mark {
+	color: blue;
+	cursor: pointer;
+	user-select: none;
+}
+#list .remove:hover, #list .mark:hover {
+	text-decoration: underline;
+}
+#list .done {
+	text-decoration: line-through;
 }
