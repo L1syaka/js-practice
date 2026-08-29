@@ -74,7 +74,7 @@ add.addEventListener('click', function() {
     allowEdit(createCell(tr, price.value, 'price'));
     allowEdit(createCell(tr, amount.value, 'amount'));
     createCell(tr, price.value * amount.value, 'cost');
-    let remove = createCell(tr, 'удалить', 'remove');
+    let remove = createCell(tr, 'remove', 'remove');
 
     remove.addEventListener('click', function() {
         this.parentElement.remove();
