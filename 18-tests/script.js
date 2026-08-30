@@ -1,11 +1,18 @@
 "use strict";
 
+let answers = [
+    'answer 1',
+    'answer 2',
+    'answer 3'
+];
+
+
 let test = document.querySelector('#test');
 let inputs = test.querySelectorAll('input');
 let result = document.querySelector('#resBtn');
 
-function checkAnswer(input) {
-    if (input.value === input.dataset.answer) {
+function checkAnswer(input, index) {
+    if (answers[index] === input.value) {
         input.classList.add('right');
         input.disabled = true;
     } else {
@@ -15,7 +22,5 @@ function checkAnswer(input) {
 }
 
 result.addEventListener('click', function() {
-    for (let input of inputs) {
-        checkAnswer(input);
-    }
+    inputs.forEach((input, index) => checkAnswer(input, index))
 });
