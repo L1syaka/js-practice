@@ -1,18 +1,27 @@
 "use strict";
 
-let questions = {
-	'question 1?': 'answer 1',
-	'question 2?': 'answer 2',
-	'question 3?': 'answer 3',
-}
+let questions = [
+	{
+		text:  'Question 1?',
+		right: 'Answer 1',
+	},
+	{
+		text:  'Question 2?',
+		right: 'Answer 2',
+	},
+	{
+		text:  'Question 3?',
+		right: 'Answer 3',
+	},
+];
 
 let test = document.querySelector('#test');
 let result = document.querySelector('#resBtn');
 
-function checkAnswer(input) {
-    let question = input.parentElement.querySelector('p').textContent;
+function checkAnswer(input, index) {
+    let question = questions[index];
 
-        if (input.value === questions[question]) {
+        if (input.value === question.right) {
             input.classList.add('right');
             input.disabled = true;
         } else {
@@ -22,11 +31,11 @@ function checkAnswer(input) {
 }
 
 ;(function createQuestions() {
-    for (let question in questions) {
+    for (let question of questions) {
         let div = document.createElement('div');
 
         let p = document.createElement('p');
-        p.textContent = question; 
+        p.textContent = question.text; 
         div.append(p);
 
         let input = document.createElement('input');
@@ -39,7 +48,5 @@ function checkAnswer(input) {
 result.addEventListener('click', function() {
     let inputs = test.querySelectorAll('input');
 
-    for (let input of inputs) {
-        checkAnswer(input)
-    }
+    inputs.forEach((input, index) => checkAnswer(input, index))
 });
