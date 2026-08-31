@@ -2,9 +2,9 @@
 
 let test = document.querySelector('#test');
 let radios = test.querySelectorAll('input');
+let button = document.querySelector('#checkRes');
 
 function checkAnswer(radio) {
-    console.log(radio.g);
     if (radio.hasAttribute('data-right')) {
         radio.classList.add('right')
     } else {
@@ -12,8 +12,9 @@ function checkAnswer(radio) {
     }
 }
 
-for (let radio of radios) {
-    radio.addEventListener('click', function() {
-        checkAnswer(radio);
-    });
-}
+
+button.addEventListener('click', function() {
+    for (let radio of radios) {
+            checkAnswer(radio);
+    }
+});
