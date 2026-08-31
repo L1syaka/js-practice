@@ -6,3 +6,9 @@ body{
 	font-size: 2rem;
 	padding: 2rem;
 }
+.right {
+	accent-color: green;
+}
+.wrong {
+	accent-color: red;
+}
