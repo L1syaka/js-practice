@@ -1,16 +1,47 @@
 "use strict";
 
 let slider = document.querySelector('#slider');
+let left = document.querySelector('#left');
+let right = document.querySelector('#right');
 
 let images = ['1.jpg', '2.jpg', '3.jpg'];
+let index = 0;
 
-function imgSliderTimer() {
-    let index = 0;
-    slider.src = `images/${images[index++]}`;
-
-    setInterval(() => {
-        slider.src = `images/${images[index++]}`;
-        if (index >= images.length) index = 0;
-    }, 1000);
+function changeImage() {
+    slider.src = `images/${images[index]}`
 }
-imgSliderTimer();
+changeImage();
+
+setInterval(() => {
+    index++;
+
+    if (index >= images.length) {
+        index = 0
+    };
+
+    changeImage()
+}, 1000);
+
+left.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    index--;
+
+    if (index < 0) {
+        index = images.length - 1;
+    }
+
+    changeImage();
+});
+
+right.addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    index++;
+
+    if (index >= images.length) {
+        index = 0;
+    }
+
+    changeImage();
+});

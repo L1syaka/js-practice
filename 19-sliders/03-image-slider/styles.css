@@ -9,3 +9,13 @@ body{
 img{
 	width: 500px;
 }
+#container{
+	width: max-content;
+}
+#arrows{
+	display: flex;
+	justify-content: space-between;
+}
+#arrows a{
+	text-decoration: none;
+}
