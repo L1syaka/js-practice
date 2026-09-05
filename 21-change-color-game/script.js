@@ -5,12 +5,17 @@ let rows = 3;
 let cols = 3;
 
 
-
 function createTable() {
     let table = document.querySelector('#field');
+    let info = document.querySelector('#totalClicks');
+    let clicks = 0;
 
+    function updateClicksView() {
+        info.textContent = `Total clicks: ${clicks}`;
+    }
+    updateClicksView()
 
-    function isVictory(colors, cells, col) {
+    function checkWin(cells, col) {
         let currentColor = col.classList[0];
 
         let res = cells.every(function(cell) {
@@ -49,8 +54,12 @@ function createTable() {
             col.classList.add(color);
 
             col.addEventListener('click', function() {
+                clicks++;
+                updateClicksView();
+
                 col.classList.add(getNextElem(colors, col));
-                isVictory(colors, cells, col);
+                
+                checkWin(cells, col);
             });
 
             row.append(col);
